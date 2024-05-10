@@ -1,0 +1,92 @@
+@layout.admin() 
+<div>
+  <div class="mx-auto max-w-screen-lg  pt-1 sm:px-8">
+    <div class="flex items-center justify-between pb-6">
+      <div class="grid">
+        <h1 class="font-bold text-black text-2xl tracking-wide">Products</h1>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="ml-10 space-x-8 lg:ml-40">
+          <a href="{{route('products.create')}}" class="flex items-center gap-2 rounded-md bg-black  px-4 py-2 text-sm font-semibold border border-black text-white focus:outline-none focus:ring-black hover:bg-white transition  delay-100 hover:text-black hover:cursor-pointer ">
+            Add Product
+            <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
+            </svg>            
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="overflow-y-hidden rounded-md border">
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-black text-left text-xs font-semibold uppercase tracking-widest text-white">
+              <th class="px-5 py-3">No.</th>
+              <th class="px-5 py-3">Name</th>
+              <th class="px-5 py-3">Quantity</th>
+              <th class="px-5 py-3">Price</th>
+              <th class="px-5 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="text-black ">
+            @if(products.length === 0)
+            <tr>
+              <td colspan="6" class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                <p class="whitespace-no-wrap text-center text">No Data Found</p>
+              </td>
+            </tr>
+            @else
+            @each((product, index) in products)
+            <tr>
+              <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                <p class="whitespace-no-wrap">{{index + 1}} </p>
+              </td>
+              <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                    <p class="whitespace-no-wrap">{{product.name}}</p>
+              </td>
+              <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                <p class="whitespace-no-wrap">{{product.quantity}} pcs</p>
+              </td>
+              <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                <p class="whitespace-no-wrap">Rp. {{product.price}}</p>
+              </td>
+              <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+               <div class="flex justify-start gap-3">
+                <a href="{{ route('products.edit', {id: product.id})}}">
+                  <span>
+                    <svg class="w-6 h-6 text-gray-800 hover:text-green-600  transition delay-100 shadow " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+                  </svg>
+                  </span>
+                </a>
+                
+                <form action="{{ route('products.destroy', {id : product.id}, {qs: {_method: 'DELETE'}})}}" method="POST">
+                  {{csrfField()}}
+                  <button type="submit">
+                    <span>
+                      <svg class="w-6 h-6 text-gray-800 hover:text-red-500  transition delay-100 shadow " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                    </svg>
+                    </span>
+                  </button>
+                </form>
+               </div>
+              </td>
+            </tr>
+            @end
+            @end
+          </tbody>
+        </table>
+      </div>
+      <div class="flex flex-col items-center border-t bg-white px-5 py-5 sm:flex-row sm:justify-between">
+        <span class="text-xs text-gray-600 sm:text-sm"> Showing {{products.length}} to {{products.length}}</span>
+        <div class="mt-2 inline-flex sm:mt-0">
+          <a class="mr-2 h-12 w-12 rounded-full border text-sm font-semibold text-gray-600 transition duration-150 hover:bg-gray-100">Prev</a>
+          <a class="h-12 w-12 rounded-full border text-sm font-semibold text-gray-600 transition duration-150 hover:bg-gray-100">Next</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@end
+

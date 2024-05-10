@@ -1,0 +1,6 @@
+@let(className = 'flex items-center gap-2 rounded-md bg-black mt-3  px-4 py-2 text-sm font-semibold border border-black text-white focus:outline-none focus:ring-black hover:bg-white transition  delay-100 hover:text-black hover:cursor-pointer ')
+@let(nodeName = $props.has('href') ? 'a' : 'button')
+
+<{{ nodeName }} {{ $props.merge({ class: [className] }).toAttrs() }}>
+  {{{ await $slots.main() }}}
+</{{ nodeName }}>

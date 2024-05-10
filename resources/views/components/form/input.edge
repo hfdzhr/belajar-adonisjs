@@ -1,0 +1,31 @@
+@let(value = $props.get('value') || '')
+
+<div>
+  <label for="{{name || ''}}">
+    @if ($slots.label || label)
+      @if ($slots.label)
+        {{{ await $slots.label() }}}
+      @else
+        {{ label }}
+      @endif
+    @endif
+  </label>
+
+  @if (type === 'select')
+    <select name="{{ name || '' }}">
+      {{{ await $slots.main() }}}
+    </select>
+  @else
+    <input type="{{ type || 'text' }}" name="{{ name || '' }}" placeholder="{{ placeholder || '' }}"
+           class="h-12 mt-1 w-full max-w-full rounded-md border bg-white px-5 text-md outline-none focus:ring focus:ring-black"
+           value="{{ value }}" />
+  @endif
+
+  @if (name)
+    @inputError(name)
+      <p class="text-xs text-red-500 mt-1">
+        {{ $messages.join(', ') }}
+      </p>
+    @end
+  @endif
+</div>

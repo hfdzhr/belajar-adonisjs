@@ -1,0 +1,55 @@
+@layout.admin() 
+<div class="">
+  <div class="mx-auto max-w-4xl px-5">
+      <h2 class="my-2 -ml-16  text-3xl font-bold text-left">Add Product</h2>
+    <form action="{{route('products.store')}}" method="POST">
+      {{csrfField()}}
+    <div class="-ml-20 flex p-4 text-left text-gray-700">
+      <div class="w-full space-y-4 text-gray-700">
+        @!form.input(
+          {
+            label: 'Name :',
+            name: 'name',
+            type: 'text',
+            placeholder: 'Bormal Book'
+          }
+        )
+
+        @!form.input(
+          {
+            label: 'Quantity :',
+            name: 'quantity',
+            type: 'number',
+            placeholder: '20'
+          }
+        )
+
+        @!form.input(
+          {
+            label: 'Price :',
+            name: 'price',
+            type: 'number',
+            placeholder: '20000'
+          }
+        )
+
+        <div class="float-right">
+          @button({type: 'submit'}) 
+          Save
+          <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 18-7 3 7-18 7 18-7-3Zm0 0v-5"/>
+          </svg>  
+          @end
+        </div>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+
+
+
+  
+@end
+

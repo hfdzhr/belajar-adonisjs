@@ -1,0 +1,69 @@
+@layout.admin() 
+<div class="">
+  <div class="mx-auto max-w-4xl px-5">
+      <h2 class="my-2 -ml-16  text-3xl font-bold text-left">Add Article {{article.title}}</h2>
+    <form action="{{route('articles.update', {id : article.id}, {qs: {_method: 'PATCH'}})}}" method="POST" enctype="multipart/form-data">
+      {{csrfField()}}
+    <div class="-ml-20 flex p-4 text-left text-gray-700">
+      <div class="w-full space-y-4 text-gray-700">
+        <div class="flex flex-col gap-4 py-4  lg:flex-row">
+            <div class="shrink-0 w-32  sm:py-4">
+              <p class="mb-auto ">Image : </p>
+
+            </div>
+            <div class="flex h-56 w-full mt-2 flex-col items-center justify-center gap-4 rounded-md border border-dashed border-gray-300 p-5 text-center">
+                <img src="http://localhost:3333/images/{{article.image}}" width="100" alt="" srcset="">
+              <p class="text-sm text-gray-600">Change your image article</p>
+              <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png" class="max-w-full  px-2 font-medium text-black-600 outline-none ring-black-600 focus:ring-1" />
+            </div>
+          </div>
+
+     
+          @!form.input(
+            {
+              label: 'Title :',
+              name: 'title',
+              type: 'text',
+              placeholder: 'How to make nanas',
+              value: article.title || old('title'),
+            }
+          )
+
+
+        <div>
+            <label class="block" for="name">
+                <p class="text-gray-600">Content : </p>
+                <textarea class="h-40  mt-1 w-full max-w-full rounded-md border bg-white px-5 text-md outline-none focus:ring focus:ring-black" type="text" name="content" placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit.">{{article.content}}</textarea>
+              </label>
+        </div>
+
+        @!form.input(
+            {
+              label: 'Author :',
+              name: 'author',
+              type: 'text',
+              placeholder: 'Jhon Doe',
+              value: article.author || old('author'),
+            }
+          )
+
+        <div class="float-right">
+          @button({type: 'submit'}) 
+          Save
+          <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 18-7 3 7-18 7 18-7-3Zm0 0v-5"/>
+          </svg>  
+          @end
+        </div>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+
+
+
+  
+@end
+
