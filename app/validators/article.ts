@@ -5,7 +5,7 @@ export const createArticleValidator = vine.compile(
     title: vine.string().trim().maxLength(255),
     content: vine.string(),
     author: vine.string().trim().maxLength(50),
-    image: vine.string().url()
+    image: vine.string().url(),
   })
 )
 

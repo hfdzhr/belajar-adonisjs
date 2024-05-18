@@ -16,6 +16,13 @@
         </div>
       </div>
     </div>
+    @flashMessage('notification')
+      @notification.success({
+        message: $message.message
+      }) 
+        
+      @end
+    @end
     <div class="overflow-y-hidden rounded-md border">
       <div class="overflow-x-auto">
         <table class="w-full">
@@ -37,9 +44,9 @@
             </tr>
             @else
             @each((product, index) in products)
-            <tr>
+            <tr class="odd:bg-white even:bg-slate-50">
               <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                <p class="whitespace-no-wrap">{{index + 1}} </p>
+                <p class="whitespace-no-wrap font-bold">{{index + 1}} </p>
               </td>
               <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                     <p class="whitespace-no-wrap">{{product.name}}</p>
@@ -54,7 +61,7 @@
                <div class="flex justify-start gap-3">
                 <a href="{{ route('products.edit', {id: product.id})}}">
                   <span>
-                    <svg class="w-6 h-6 text-gray-800 hover:text-green-600  transition delay-100 shadow " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-gray-800 hover:text-green-600 hover:-translate-y-0.5 hover:scale-110 transition  delay-100  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
                   </svg>
                   </span>
@@ -64,9 +71,17 @@
                   {{csrfField()}}
                   <button type="submit">
                     <span>
-                      <svg class="w-6 h-6 text-gray-800 hover:text-red-500  transition delay-100 shadow " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <svg class="w-6 h-6 text-gray-800 hover:text-red-500 hover:-translate-y-0.5 hover:scale-110  transition delay-100  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
                     </svg>
+                    </span>
+                  </button>
+                </form>
+                <form action="{{ route('products.buy', {id : product.id}) }}" method="POST">
+                  {{csrfField()}}
+                  <button type="submit">
+                    <span>
+                     Beli
                     </span>
                   </button>
                 </form>

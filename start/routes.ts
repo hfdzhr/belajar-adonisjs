@@ -15,6 +15,7 @@ import DashboardController from '#controllers/dashboard_controller'
 import ProductsController from '#controllers/products_controller'
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
+import PurchasesController from '#controllers/purchases_controller'
 
 router.on('/').render('pages/home').as('home')
 
@@ -36,5 +37,6 @@ router.group(() => {
 
     router.resource('products', ProductsController)
     router.resource('articles', ArticlesController)
+    router.post('/buy/:id', [PurchasesController, 'buy']).as('products.buy')
 }).prefix('admin').use(middleware.auth())
 

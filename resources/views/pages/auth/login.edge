@@ -1,4 +1,6 @@
-@layout.auth() 
+@layout.auth({
+  title: 'Login'
+}) 
 <form action="{{route('login.store')}}" method="POST" class="relative space-y-3 rounded-md bg-white p-6 shadow-xl lg:p-10 border border-gray-100 m-10"> 
     <h1 class="text-xl font-semibold lg:text-2xl">Admin - Login</h1>
     <p class="pb-4 text-gray-500">Sign for admin</p>

@@ -11,7 +11,7 @@ export default class Article extends BaseModel {
   @column()
   declare title: string
 
-  @column()
+@column()
   declare content: string
 
   @column()

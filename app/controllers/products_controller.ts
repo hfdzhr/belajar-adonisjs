@@ -43,10 +43,13 @@ export default class ProductsController {
     return response.redirect().toRoute('products.index')
   }
 
-  async destroy({ params, response }: HttpContext) {
+  async destroy({ params, response, session }: HttpContext) {
     const product = await Product.findOrFail(params.id)
     await product.delete()
 
+    session.flash('notification', {
+      message: 'Product has been deleted'
+    })
     return response.redirect().back()
   }
 }

@@ -12,7 +12,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
   /**
    * Status pages are used to display a custom HTML pages for certain error
    * codes. You might want to enable them in production only, but feel
-   * free to enable them in development as well.
+   * free to enable them in development as well
    */
   protected renderStatusPages = app.inProduction
 

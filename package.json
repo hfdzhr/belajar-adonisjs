@@ -1,8 +1,12 @@
 {
   "name": "belajar-adonisjs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
+  "author": {
+    "name": "Hafid Al Azhar",
+    "email": "hafidalazhar5@gmail.com"
+  },
   "license": "UNLICENSED",
   "scripts": {
     "start": "node bin/server.js",
@@ -57,6 +61,7 @@
     "@adonisjs/auth": "^9.2.0",
     "@adonisjs/core": "^6.8.0",
     "@adonisjs/lucid": "^20.5.1",
+    "@adonisjs/redis": "^8.0.1",
     "@adonisjs/session": "^7.4.0",
     "@adonisjs/shield": "^8.1.1",
     "@adonisjs/static": "^1.1.1",
@@ -64,8 +69,12 @@
     "@vinejs/vine": "^2.0.0",
     "edge.js": "^6.0.2",
     "luxon": "^3.4.4",
+    "midtrans-node-client": "^0.0.6",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.45",
     "mysql2": "^3.9.7",
-    "reflect-metadata": "^0.2.2"
+    "reflect-metadata": "^0.2.2",
+    "uuid": "^9.0.1"
   },
   "hotHook": {
     "boundaries": [
